@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lati Creative — Brand Strategy & Visual Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:      #f8f2e8;
+  --surface: #efe8db;
+  --surface2: #e5ddd0;
+  --text:    #1c1510;
+  --muted:   #7a6e66;
+  --accent:  oklch(0.55 0.17 46);
+  --accent2: oklch(0.45 0.17 46);
+  --border:  rgba(28,21,16,0.1);
+  --ff-d: 'Playfair Display', Georgia, serif;
+  --ff-b: 'DM Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-b);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 56px;
+  transition: background 0.4s, padding 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(248,242,232,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 18px 56px;
+  border-color: var(--border);
+}
+.nav-logo img {
+  height: 28px;
+  width: auto;
+}
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  padding: 10px 22px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 56px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1;
+  padding-top: 100px;
+  padding-bottom: 64px;
+  max-width: 860px;
+}
+.hero-statement {
+  font-family: var(--ff-d);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 32px;
+  line-height: 1.65;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease) 0.3s forwards;
+}
+.hero-headline {
+  font-family: var(--ff-d);
+  font-size: clamp(3.2rem, 7vw, 7.5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 1s var(--ease) 0.5s forwards;
+}
+.hero-headline em { font-style: italic; color: var(--muted); }
+.hero-sub-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-bottom: 40px;
+  text-wrap: pretty;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease) 0.7s forwards;
+}
+.hero-metrics {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.hero-metric { display: flex; flex-direction: column; gap: 4px; }
+.hero-metric-n {
+  font-family: var(--ff-d);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+}
+.hero-metric-l {
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease) 0.9s forwards;
+}
+.hero-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease) 0.3s forwards;
+}
+.hero-headline {
+  font-family: var(--ff-d);
+  font-size: clamp(3.2rem, 6.5vw, 7rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  opacity: 0;
+  animation: fadeUp 1s var(--ease) 0.5s forwards;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--muted);
+}
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 48px 64px;
+}
+.hero-right-section {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease) 0.8s forwards;
+}
+.hero-right-section:last-child { border-bottom: 1px solid var(--border); }
+.hero-right-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.hero-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hero-service-item {
+  font-family: var(--ff-d);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text);
+}
+.hero-clients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+.hero-client {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.hero-statement {
+  font-family: var(--ff-d);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.hero-stats-row {
+  display: flex;
+  gap: 32px;
+}
+.hero-stat { display: flex; flex-direction: column; gap: 4px; }
+.hero-stat-n {
+  font-family: var(--ff-d);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+}
+.hero-stat-l {
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.hero-cta-group { display: flex; flex-direction: column; gap: 12px; }
+.hero-cta {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  padding: 14px 24px;
+  text-decoration: none;
+  transition: background 0.2s;
+  text-align: center;
+}
+.hero-cta:hover { background: var(--accent); }
+.hero-avail {
+  font-size: 0.72rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-avail::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #5a9e6f;
+  flex-shrink: 0;
+}
+
+/* ─── SECTION BASICS ─── */
+section { padding: 100px 56px; }
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--accent);
+}
+
+/* ─── SERVICES ─── */
+#services {
+  background: var(--text);
+  color: var(--bg);
+  padding: 80px 56px;
+}
+#services .section-label { color: oklch(0.74 0.12 46); }
+#services .section-label::before { background: oklch(0.74 0.12 46); }
+.services-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+.services-heading {
+  font-family: var(--ff-d);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--bg);
+}
+.services-heading em { font-style: italic; color: rgba(248,242,232,0.45); }
+.services-list { display: flex; flex-direction: column; }
+.service-row {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 28px 0;
+  border-top: 1px solid rgba(248,242,232,0.1);
+  transition: opacity 0.3s;
+}
+.service-row:last-child { border-bottom: 1px solid rgba(248,242,232,0.1); }
+.service-row:hover { opacity: 0.75; }
+.service-n {
+  font-size: 0.72rem;
+  color: oklch(0.74 0.12 46);
+  font-style: italic;
+  font-family: var(--ff-d);
+}
+.service-row-name {
+  font-family: var(--ff-d);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--bg);
+}
+.service-row-items {
+  font-size: 0.75rem;
+  color: rgba(248,242,232,0.45);
+  letter-spacing: 0.04em;
+  text-align: right;
+  max-width: 220px;
+  line-height: 1.6;
+}
+
+/* ─── WORK ─── */
+#work {}
+.work-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+.work-title {
+  font-family: var(--ff-d);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+.work-title em { font-style: italic; color: var(--muted); }
+.work-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  max-width: 240px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* Case Cards */
+.case-cards { display: flex; flex-direction: column; gap: 1px; margin-bottom: 64px; }
+.case-card {
+  background: var(--surface);
+  overflow: hidden;
+}
+.case-header {
+  display: grid;
+  grid-template-columns: 48px 1fr 32px;
+  gap: 28px;
+  align-items: center;
+  padding: 36px 40px;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+.case-header:hover { background: var(--surface2); }
+.case-n {
+  font-family: var(--ff-d);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--border);
+  line-height: 1;
+}
+.case-info { display: flex; flex-direction: column; gap: 6px; }
+.case-cat {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.case-name {
+  font-family: var(--ff-d);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.case-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.case-toggle {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.4s, border-color 0.3s, background 0.3s;
+}
+.case-card.open .case-toggle {
+  transform: rotate(45deg);
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.case-card.open .case-toggle svg { stroke: var(--bg); }
+.case-toggle svg { width: 12px; height: 12px; stroke: var(--text); fill: none; }
+.case-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.7s var(--ease);
+}
+.case-card.open .case-body { max-height: 600px; }
+.case-body-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  border-top: 1px solid var(--border);
+}
+.case-img {
+  background: var(--surface2);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+.case-img-label {
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 0 16px;
+  line-height: 1.5;
+}
+.case-detail {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.case-detail-heading {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.case-detail-text {
+  font-size: 0.87rem;
+  color: var(--muted);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+.case-outcomes {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.outcome { display: flex; flex-direction: column; gap: 4px; }
+.outcome-n {
+  font-family: var(--ff-d);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+}
+.outcome-l {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Logo Row */
+.logo-section-heading {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.logo-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+}
+.logo-cell {
+  background: var(--surface);
+  aspect-ratio: 3/2;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: background 0.25s;
+}
+.logo-cell:hover { background: var(--surface2); }
+.logo-cell img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20px;
+  transition: opacity 0.25s, transform 0.35s var(--ease);
+}
+.logo-cell:hover img { opacity: 0.7; transform: scale(1.03); }
+.logo-cell-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 14px;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.logo-cell:hover .logo-cell-overlay { opacity: 1; }
+.logo-cell-name {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-family: var(--ff-b);
+  text-align: center;
+  line-height: 1.4;
+}
+.logo-cell-industry {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ─── PROCESS ─── */
+#process { background: var(--surface); padding-bottom: 80px; }
+.process-inner {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.process-left { position: sticky; top: 120px; }
+.process-heading {
+  font-family: var(--ff-d);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.process-heading em { font-style: italic; color: var(--muted); }
+.process-subtext {
+  font-size: 0.87rem;
+  color: var(--muted);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+.process-steps { display: flex; flex-direction: column; }
+.process-step {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 24px;
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.process-step:last-child { border-bottom: 1px solid var(--border); }
+.process-step.visible { opacity: 1; transform: none; }
+.step-n {
+  font-family: var(--ff-d);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--accent);
+  padding-top: 3px;
+}
+.step-content {}
+.step-name {
+  font-family: var(--ff-d);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.step-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  opacity: 0.7;
+}
+.ai-badge::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: oklch(0.60 0.08 278);
+  flex-shrink: 0;
+}
+
+/* ─── TESTIMONIAL ─── */
+#testimonial {
+  padding: 80px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.testimonial-inner { max-width: 860px; text-align: center; }
+.testimonial-mark {
+  font-family: var(--ff-d);
+  font-size: 5rem;
+  color: var(--accent);
+  opacity: 0.3;
+  line-height: 0.8;
+  margin-bottom: 24px;
+}
+.testimonial-quote {
+  font-family: var(--ff-d);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--text);
+  text-wrap: pretty;
+  margin-bottom: 32px;
+}
+.testimonial-byline {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.testimonial-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 32px;
+}
+.t-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.t-dot.active { background: var(--accent); }
+
+/* ─── ABOUT ─── */
+#about {
+  background: var(--text);
+  color: var(--bg);
+}
+#about .section-label { color: oklch(0.74 0.12 46); }
+#about .section-label::before { background: oklch(0.74 0.12 46); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-img {
+  aspect-ratio: 3/4;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.about-content { padding-top: 8px; }
+.about-name {
+  font-family: var(--ff-d);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--bg);
+  margin-bottom: 32px;
+}
+.about-name em { font-style: italic; color: rgba(248,242,232,0.4); }
+.about-p {
+  font-size: 0.9rem;
+  color: rgba(248,242,232,0.6);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-wrap: pretty;
+}
+.about-p strong { color: var(--bg); font-weight: 400; }
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(248,242,232,0.1);
+}
+.a-stat-n {
+  font-family: var(--ff-d);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: oklch(0.74 0.12 46);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.a-stat-l {
+  font-size: 0.72rem;
+  color: rgba(248,242,232,0.4);
+  letter-spacing: 0.04em;
+}
+
+/* ─── CONTACT ─── */
+#contact {
+  padding: 100px 56px;
+}
+.contact-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+.contact-h {
+  font-family: var(--ff-d);
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  max-width: 640px;
+}
+.contact-h em { font-style: italic; color: var(--muted); }
+.contact-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+.contact-email {
+  font-family: var(--ff-d);
+  font-size: 1rem;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.contact-email:hover { color: var(--accent); }
+.contact-social {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-social:hover { color: var(--text); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.contact-form-panel {
+  background: var(--surface);
+  padding: 48px;
+}
+.contact-panel-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contact-panel-label::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--accent);
+}
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field.full { grid-column: span 2; }
+.form-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-input, .form-select, .form-textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--ff-b);
+  font-size: 0.88rem;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-weight: 300;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--accent);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); opacity: 0.6; }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  font-family: var(--ff-b);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+  margin-top: 8px;
+}
+.form-submit:hover { background: var(--accent); }
+.form-success {
+  display: none;
+  padding: 16px;
+  background: var(--surface2);
+  border-left: 2px solid var(--accent);
+  font-size: 0.87rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+.form-success.visible { display: block; }
+.contact-cal-panel {
+  background: var(--text);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cal-heading {
+  font-family: var(--ff-d);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+.cal-heading em { font-style: italic; color: rgba(248,242,232,0.45); }
+.cal-desc {
+  font-size: 0.87rem;
+  color: rgba(248,242,232,0.55);
+  line-height: 1.75;
+  text-wrap: pretty;
+  margin-bottom: 40px;
+}
+.cal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+  font-family: var(--ff-b);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+}
+.cal-btn:hover { opacity: 0.85; }
+.cal-btn svg { width: 14px; height: 14px; stroke: var(--bg); fill: none; flex-shrink: 0; }
+.cal-note {
+  font-size: 0.72rem;
+  color: rgba(248,242,232,0.3);
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-top { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .contact-meta { align-items: flex-start; text-align: left; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-field.full { grid-column: span 1; }
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 24px 56px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer img { height: 18px; }
+.footer-text {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ─── TWEAKS PANEL ─── */
+#tweaks-panel {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 20px;
+  width: 220px;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+#tweaks-panel.open { display: flex; }
+.tw-title { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.tw-group { display: flex; flex-direction: column; gap: 8px; }
+.tw-label { font-size: 0.7rem; color: var(--muted); }
+.tw-opts { display: flex; gap: 6px; flex-wrap: wrap; }
+.tw-btn {
+  font-size: 0.65rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--ff-b);
+  transition: all 0.2s;
+}
+.tw-btn:hover, .tw-btn.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  to { opacity: 1; transform: none; }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* ─── MOBILE MENU ─── */
+#mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 99;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+#mobile-menu.open { display: flex; }
+#mobile-menu a {
+  font-family: var(--ff-d);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text);
+  text-decoration: none;
+}
+#mobile-menu a:hover { color: var(--accent); }
+.mobile-close {
+  position: absolute;
+  top: 24px; right: 24px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  #hero { padding: 120px 40px 64px; }
+  .services-inner { grid-template-columns: 1fr; gap: 40px; }
+  .process-inner { grid-template-columns: 1fr; gap: 40px; }
+  .process-left { position: static; }
+  .logo-row { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-img { aspect-ratio: 16/9; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  section { padding: 72px 24px; }
+  #hero { padding: 100px 24px 48px; }
+  .hero-headline { font-size: clamp(2.6rem, 10vw, 4rem); }
+  .case-body-inner { grid-template-columns: 1fr; }
+  .case-img { aspect-ratio: 16/9; }
+  .case-header { padding: 24px; gap: 16px; }
+  .logo-row { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-quote { font-size: 1.3rem; }
+  .logo-cell { aspect-ratio: 4/3; }
+  .case-cards { gap: 1px; }
+  .work-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+  #services { padding: 64px 24px; }
+  .service-row { grid-template-columns: 24px 1fr; gap: 16px; }
+  .service-row-items { display: none; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  #testimonial { padding: 64px 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero-headline { font-size: 2.6rem; }
+  .logo-row { grid-template-columns: repeat(2, 1fr); }
+  .case-outcomes { flex-direction: row; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero">
+    <img src="assets/lati-logo.png" alt="Lati Creative">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Approach</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Contact</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#work" onclick="toggleMenu()">Work</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#process" onclick="toggleMenu()">Approach</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-statement">I'm Latika — a brand strategist with a designer's eye and a computer science background.</p>
+    <h1 class="hero-headline">
+      Brand strategy<br>that moves your<br><em>business forward.</em>
+    </h1>
+    <p class="hero-sub-desc">Good design isn't just pretty. It makes better decisions possible. When your brand has a clear foundation, everything else gets easier.</p>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="hero-metric-n">8+</div>
+        <div class="hero-metric-l">Years of experience</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-n">40+</div>
+        <div class="hero-metric-l">Brands built</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-n">6 wks</div>
+        <div class="hero-metric-l">Avg. project turnaround</div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <a class="hero-cta" href="#contact">Start a project</a>
+    </div>
+  </div>
+  <div class="hero-right" style="display:none"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I do</div>
+  <div class="services-inner">
+    <h2 class="services-heading reveal">How I can help.</h2>
+    <div class="services-list">
+      <div class="service-row reveal">
+        <span class="service-n">01</span>
+        <span class="service-row-name">Brand Strategy</span>
+        <span class="service-row-items">Positioning · Audience Research<br>Brand Architecture · Naming</span>
+      </div>
+      <div class="service-row reveal reveal-d1">
+        <span class="service-n">02</span>
+        <span class="service-row-name">Visual Identity</span>
+        <span class="service-row-items">Logo Systems · Type & Colour<br>Brand Guidelines · Motion</span>
+      </div>
+      <div class="service-row reveal reveal-d2">
+        <span class="service-n">03</span>
+        <span class="service-row-name">Creative Direction</span>
+        <span class="service-row-items">UX Positioning · Product Strategy<br>Design & Market Fit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-top reveal">
+    <div>
+      <div class="section-label">Selected work</div>
+      <h2 class="work-title">Built for<br><em>the real world</em></h2>
+    </div>
+    <p class="work-note">All outcomes client-reported.</p>
+  </div>
+
+  <div class="case-cards">
+    <!-- Case 1 -->
+    <div class="case-card reveal" id="case1">
+      <div class="case-header" onclick="toggleCase('case1')">
+        <div class="case-n">01</div>
+        <div class="case-info">
+          <div class="case-cat">Brand Strategy · Visual Identity</div>
+          <div class="case-name">Nomad Wellness</div>
+          <div class="case-desc">Repositioning a wellness brand in an oversaturated market</div>
+        </div>
+        <div class="case-toggle">
+          <svg viewBox="0 0 12 12"><line x1="6" y1="0" x2="6" y2="12" stroke-width="1.5"/><line x1="0" y1="6" x2="12" y2="6" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-body-inner">
+          <div class="case-img">
+            <div class="case-img-label">brand identity<br>system placeholder</div>
+          </div>
+          <div class="case-detail">
+            <div>
+              <div class="case-detail-heading">The challenge</div>
+              <p class="case-detail-text">Lost in a sea of serene sans-serifs and matcha-green palettes. Competing on aesthetics alone, and losing. They needed a reason to exist — not just a new logo.</p>
+            </div>
+            <div>
+              <div class="case-detail-heading">The strategy</div>
+              <p class="case-detail-text">Repositioned around a single insight: wellness doesn't happen on retreat. It happens in the gaps — on the subway, between meetings. Anti-perfectionist wellness, for the real world.</p>
+            </div>
+          </div>
+          <div class="case-outcomes">
+            <div class="outcome">
+              <div class="outcome-n">3×</div>
+              <div class="outcome-l">Social engagement</div>
+            </div>
+            <div class="outcome">
+              <div class="outcome-n">+62%</div>
+              <div class="outcome-l">Organic traffic</div>
+            </div>
+            <div class="outcome">
+              <div class="outcome-n">6 mo</div>
+              <div class="outcome-l">Brief to launch</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 2 -->
+    <div class="case-card reveal reveal-d1" id="case2">
+      <div class="case-header" onclick="toggleCase('case2')">
+        <div class="case-n">02</div>
+        <div class="case-info">
+          <div class="case-cat">Naming · Positioning · Identity</div>
+          <div class="case-name">Founder Brief</div>
+          <div class="case-desc">Moving a coaching firm upmarket through strategic repositioning</div>
+        </div>
+        <div class="case-toggle">
+          <svg viewBox="0 0 12 12"><line x1="6" y1="0" x2="6" y2="12" stroke-width="1.5"/><line x1="0" y1="6" x2="12" y2="6" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-body-inner">
+          <div class="case-img">
+            <div class="case-img-label">brand identity<br>system placeholder</div>
+          </div>
+          <div class="case-detail">
+            <div>
+              <div class="case-detail-heading">The challenge</div>
+              <p class="case-detail-text">A leadership coaching firm that looked indistinguishable from a mid-tier consultancy. None of the brand authority to justify premium pricing or attract sophisticated clients.</p>
+            </div>
+            <div>
+              <div class="case-detail-heading">The strategy</div>
+              <p class="case-detail-text">Renamed and repositioned as 'the thinking partner for founders building companies.' A new name, crisp editorial identity, content positioning that spoke to ambition — not competence.</p>
+            </div>
+          </div>
+          <div class="case-outcomes">
+            <div class="outcome">
+              <div class="outcome-n">2×</div>
+              <div class="outcome-l">Project value</div>
+            </div>
+            <div class="outcome">
+              <div class="outcome-n">+40%</div>
+              <div class="outcome-l">Lead quality</div>
+            </div>
+            <div class="outcome">
+              <div class="outcome-n">8 mo</div>
+              <div class="outcome-l">To measurable uplift</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo grid -->
+  <div class="logo-section-heading reveal">Further work</div>
+  <div class="logo-row">
+    <div class="logo-cell reveal">
+      <img src="assets/logo-bearings.png" alt="Bearings Group">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">Bearings Group</div>
+        <div class="logo-cell-industry">Consulting</div>
+      </div>
+    </div>
+    <div class="logo-cell reveal reveal-d1">
+      <img src="assets/logo-mvmt.png" alt="Movement with K">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">Movement with K</div>
+        <div class="logo-cell-industry">Fitness & Wellness</div>
+      </div>
+    </div>
+    <div class="logo-cell reveal reveal-d2">
+      <img src="assets/logo-yyz.png" alt="YYZ Data">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">YYZ Data</div>
+        <div class="logo-cell-industry">Technology</div>
+      </div>
+    </div>
+    <div class="logo-cell reveal reveal-d3">
+      <img src="assets/logo-bvc.png" alt="Beacon Veterinary Cardiology">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">Beacon Veterinary Cardiology</div>
+        <div class="logo-cell-industry">Healthcare</div>
+      </div>
+    </div>
+    <div class="logo-cell reveal">
+      <img src="assets/logo-ab.png" alt="Accounting & Bookkeeping">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">Accounting & Bookkeeping</div>
+        <div class="logo-cell-industry">Finance</div>
+      </div>
+    </div>
+    <div class="logo-cell reveal reveal-d1">
+      <img src="assets/logo-nautix.png" alt="Nautix">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">Nautix</div>
+        <div class="logo-cell-industry">Consulting</div>
+      </div>
+    </div>
+    <div class="logo-cell reveal reveal-d2">
+      <img src="assets/logo-famil.png" alt="Famil">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">Famil</div>
+        <div class="logo-cell-industry">Non-profit</div>
+      </div>
+    </div>
+    <div class="logo-cell reveal reveal-d3">
+      <img src="assets/logo-seconds.jpg" alt="Seconds Ceramics">
+      <div class="logo-cell-overlay">
+        <div class="logo-cell-name">Seconds Ceramics</div>
+        <div class="logo-cell-industry">Retail & Craft</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">How I work</div>
+  <div class="process-inner">
+    <div class="process-left reveal">
+      <h2 class="process-heading">Strategy first.<br><em>Always.</em></h2>
+      <p class="process-subtext">Every engagement follows the same rigorous foundation. Design decisions are earned, not assumed — I use AI-augmented research to move faster without sacrificing depth.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-n">i.</div>
+        <div class="step-content">
+          <div class="step-name">Discovery</div>
+          <p class="step-text">Brand audit, stakeholder interviews, and alignment on what success actually looks like. We don't start designing until we agree on what we're solving.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-n">ii.</div>
+        <div class="step-content">
+          <div class="step-name">Research</div>
+          <p class="step-text">Market mapping, audience insight, competitive landscape. AI-augmented tools let me surface patterns in hours, not weeks.</p>
+          <span class="ai-badge">AI-augmented</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-n">iii.</div>
+        <div class="step-content">
+          <div class="step-name">Strategy</div>
+          <p class="step-text">Positioning framework, brand narrative, tone of voice. The document that makes every downstream decision faster and smarter.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-n">iv.</div>
+        <div class="step-content">
+          <div class="step-name">Design</div>
+          <p class="step-text">Visual identity system, applied across every relevant touchpoint. Grounded in strategy so the aesthetics aren't arbitrary — they mean something.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-n">v.</div>
+        <div class="step-content">
+          <div class="step-name">Delivery</div>
+          <p class="step-text">Brand guidelines, asset handoff, and launch support. You leave with everything your team needs to maintain the brand independently.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonial">
+  <div class="testimonial-inner reveal">
+    <div class="testimonial-mark">"</div>
+    <p class="testimonial-quote" id="t-quote">Latika completely changed how we think about our brand. We went from 'just another agency' to category leaders within six months.</p>
+    <div class="testimonial-byline" id="t-byline">Sarah Okafor — CEO, Nomad Wellness</div>
+    <div class="testimonial-dots">
+      <div class="t-dot active" onclick="setTestimonial(0)"></div>
+      <div class="t-dot" onclick="setTestimonial(1)"></div>
+      <div class="t-dot" onclick="setTestimonial(2)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="assets/latika-portrait.png" alt="Latika Gulati" style="width:100%;height:100%;object-fit:contain;padding:24px;">
+    </div>
+    <div class="about-content">
+      <h2 class="about-name reveal">
+        Strategic thinking<br>from someone who's<br><em>been in the room</em>
+      </h2>
+      <p class="about-p reveal">I'm <strong>Latika Gulati</strong> — a brand strategist with a designer's eye and a computer science background. I help businesses figure out who they are, what they stand for, and how to show up with confidence.</p>
+      <p class="about-p reveal reveal-d1"><strong>Good design isn't just pretty.</strong> It makes better decisions possible. When your brand has a clear foundation — the right positioning, the right story, the right visual language — everything else gets easier. Hiring, pitching, pricing, growing.</p>
+      <p class="about-p reveal reveal-d2">I work with founders, executives and entrepreneurs globally. I use AI-augmented research to move faster and see further — delivering the depth of a large agency without the timelines or the overhead. <strong>Available worldwide. Moving quickly.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-top reveal">
+    <h2 class="contact-h">Let's build something<br><em>that lasts.</em></h2>
+    <div class="contact-meta">
+      <a class="contact-email" href="mailto:hello@laticreative.design">hello@laticreative.design</a>
+      <a class="contact-social" href="https://instagram.com" target="_blank">Instagram</a>
+      <a class="contact-social" href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="contact-cal-panel">
+      <div>
+        <div class="contact-panel-label" style="color:oklch(0.74 0.12 46)">
+          <span style="display:inline-flex;align-items:center;gap:10px;">
+            <span style="width:20px;height:1px;background:oklch(0.74 0.12 46);display:inline-block;"></span>
+            Book a call
+          </span>
+        </div>
+        <h3 class="cal-heading">Prefer to talk<br><em>it through first?</em></h3>
+        <p class="cal-desc">Book a free 30-minute intro call. We'll talk about where you are, where you want to be, and whether working together makes sense.</p>
+        <a class="cal-btn" href="https://calendly.com/latika-gulati/new-meeting" target="_blank">
+          <svg viewBox="0 0 14 14"><rect x="1" y="2" width="12" height="11" rx="1" stroke-width="1.5"/><line x1="1" y1="5" x2="13" y2="5" stroke-width="1.5"/><line x1="4" y1="1" x2="4" y2="3" stroke-width="1.5"/><line x1="10" y1="1" x2="10" y2="3" stroke-width="1.5"/></svg>
+          Book intro call
+        </a>
+        <p class="cal-note">Free · 30 min · No obligation</p>
+      </div>
+    </div>
+    <div class="contact-form-panel">
+      <div class="contact-panel-label">Send a message</div>
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Name</label>
+            <input class="form-input" type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Company</label>
+            <input class="form-input" type="text" placeholder="Company name">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Project type</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select one</option>
+              <option>Brand Strategy</option>
+              <option>Visual Identity</option>
+              <option>Creative Direction</option>
+              <option>Full brand project</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field full">
+          <label class="form-label">Tell me about your project</label>
+          <textarea class="form-textarea" placeholder="What are you working on? What's the challenge?" rows="4"></textarea>
+        </div>
+        <button class="form-submit" type="submit">Send message →</button>
+        <div class="form-success" id="form-success">
+          Thanks — I'll be in touch within 48 hours.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="assets/lati-logo.png" alt="Lati Creative">
+  <span class="footer-text">© 2026 Lati Creative</span>
+  <span class="footer-text">laticreative.design</span>
+</footer>
+
+<!-- TWEAKS -->
+<div id="tweaks-panel">
+  <div class="tw-title">Tweaks</div>
+  <div class="tw-group">
+    <div class="tw-label">Accent</div>
+    <div class="tw-opts">
+      <button class="tw-btn active" onclick="setAccent('burnt')">Burnt Orange</button>
+      <button class="tw-btn" onclick="setAccent('wine')">Wine</button>
+      <button class="tw-btn" onclick="setAccent('forest')">Forest</button>
+      <button class="tw-btn" onclick="setAccent('slate')">Slate</button>
+    </div>
+  </div>
+  <div class="tw-group">
+    <div class="tw-label">Background</div>
+    <div class="tw-opts">
+      <button class="tw-btn active" onclick="setBg('warm')">Warm Cream</button>
+      <button class="tw-btn" onclick="setBg('dark')">Dark</button>
+    </div>
+  </div>
+  <div class="tw-group">
+    <div class="tw-label">Display font</div>
+    <div class="tw-opts">
+      <button class="tw-btn active" onclick="setFont('Playfair Display')">Playfair</button>
+      <button class="tw-btn" onclick="setFont('Cormorant Garamond')">Cormorant</button>
+      <button class="tw-btn" onclick="setFont('Lora')">Lora</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "burnt",
+  "bg": "warm",
+  "font": "Playfair Display"
+}/*EDITMODE-END*/;
+
+const ACCENTS = {
+  burnt:  { a: 'oklch(0.55 0.17 46)',  a2: 'oklch(0.45 0.17 46)',  hi: 'oklch(0.74 0.12 46)' },
+  wine:   { a: 'oklch(0.50 0.16 12)',  a2: 'oklch(0.40 0.16 12)',  hi: 'oklch(0.72 0.12 12)' },
+  forest: { a: 'oklch(0.50 0.12 148)', a2: 'oklch(0.40 0.12 148)', hi: 'oklch(0.72 0.10 148)' },
+  slate:  { a: 'oklch(0.50 0.10 240)', a2: 'oklch(0.40 0.10 240)', hi: 'oklch(0.72 0.08 240)' },
+};
+const BGS = {
+  warm: { bg:'#f8f2e8', surface:'#efe8db', surface2:'#e5ddd0', text:'#1c1510', muted:'#7a6e66', border:'rgba(28,21,16,0.1)', logoFilter:'none' },
+  dark: { bg:'#0e0c0b', surface:'#161310', surface2:'#1e1a16', text:'#f2ede6', muted:'#7a7470', border:'rgba(242,237,230,0.08)', logoFilter:'invert(1) brightness(0.92)' },
+};
+
+function applyAll(t) {
+  const r = document.documentElement;
+  const ac = ACCENTS[t.accent] || ACCENTS.burnt;
+  r.style.setProperty('--accent', ac.a);
+  r.style.setProperty('--accent2', ac.a2);
+  // hi accent for dark sections
+  document.querySelectorAll('#services .section-label, #services .section-label::before, #about .section-label, #about .section-label::before').forEach(() => {});
+  // update inline hi color via custom prop
+  r.style.setProperty('--accent-hi', ac.hi);
+
+  const bg = BGS[t.bg] || BGS.warm;
+  r.style.setProperty('--bg', bg.bg);
+  r.style.setProperty('--surface', bg.surface);
+  r.style.setProperty('--surface2', bg.surface2);
+  r.style.setProperty('--text', bg.text);
+  r.style.setProperty('--muted', bg.muted);
+  r.style.setProperty('--border', bg.border);
+  document.querySelectorAll('.nav-logo img, footer img').forEach(el => el.style.filter = bg.logoFilter);
+
+  if (t.font) r.style.setProperty('--ff-d', `'${t.font}', Georgia, serif`);
+}
+
+applyAll(TWEAK_DEFAULTS);
+
+function setAccent(a) {
+  document.querySelectorAll('[onclick^="setAccent"]').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  applyAll({ accent: a, bg: currentBg(), font: currentFont() });
+  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accent: a } }, '*');
+}
+function setBg(b) {
+  document.querySelectorAll('[onclick^="setBg"]').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  applyAll({ accent: currentAccent(), bg: b, font: currentFont() });
+  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { bg: b } }, '*');
+}
+function setFont(f) {
+  document.querySelectorAll('[onclick^="setFont"]').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  const lk = document.createElement('link');
+  lk.rel = 'stylesheet';
+  lk.href = `https://fonts.googleapis.com/css2?family=${f.replace(/ /g,'+')}:ital,wght@0,400;0,500;1,400;1,500&display=swap`;
+  document.head.appendChild(lk);
+  applyAll({ accent: currentAccent(), bg: currentBg(), font: f });
+  window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { font: f } }, '*');
+}
+function currentAccent() { return document.querySelector('[onclick^="setAccent"].active')?.getAttribute('onclick').match(/'(\w+)'/)?.[1] || 'burnt'; }
+function currentBg() { return document.querySelector('[onclick^="setBg"].active')?.getAttribute('onclick').match(/'(\w+)'/)?.[1] || 'warm'; }
+function currentFont() { return document.querySelector('[onclick^="setFont"].active')?.getAttribute('onclick').match(/'([^']+)'/)?.[1] || 'Playfair Display'; }
+
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').classList.add('open');
+  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('open');
+});
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+// ─── NAV SCROLL ───
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', scrollY > 60); }, { passive: true });
+
+// ─── MOBILE MENU ───
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// ─── SCROLL REVEALS ───
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const sio = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 100); sio.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.process-step').forEach(el => sio.observe(el));
+
+// ─── CASE STUDY TOGGLE ───
+function toggleCase(id) {
+  const card = document.getElementById(id);
+  const open = card.classList.contains('open');
+  document.querySelectorAll('.case-card').forEach(c => c.classList.remove('open'));
+  if (!open) card.classList.add('open');
+}
+
+// ─── TESTIMONIALS ───
+const testimonials = [
+  { q: "Latika completely changed how we think about our brand. We went from 'just another agency' to category leaders within six months.", by: "Sarah Okafor — CEO, Nomad Wellness" },
+  { q: "The strategic clarity she brought changed everything. Our clients started finding us, instead of the other way around.", by: "Daniel Chen — Founder, Founder Brief" },
+  { q: "I've worked with big agencies. Latika delivers more strategic depth, faster — and she actually gets what we're trying to build.", by: "Mia Rosenberg — Creative Director, Casa Atelier" },
+];
+function setTestimonial(i) {
+  document.getElementById('t-quote').textContent = testimonials[i].q;
+  document.getElementById('t-byline').textContent = testimonials[i].by;
+  document.querySelectorAll('.t-dot').forEach((d, j) => d.classList.toggle('active', j === i));
+}
+// Auto-rotate
+let tIdx = 0;
+setInterval(() => { tIdx = (tIdx + 1) % testimonials.length; setTestimonial(tIdx); }, 5000);
+
+// ─── FORM SUBMIT ───
+function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const name = form.querySelector('input[type="text"]').value;
+  const email = form.querySelector('input[type="email"]').value;
+  const company = form.querySelectorAll('input[type="text"]')[1]?.value || '';
+  const type = form.querySelector('select').value;
+  const message = form.querySelector('textarea').value;
+  const subject = encodeURIComponent(`Project enquiry from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}\nProject type: ${type}\n\nMessage:\n${message}`);
+  window.location.href = `mailto:hello@laticreative.design?subject=${subject}&body=${body}`;
+  document.getElementById('form-success').classList.add('visible');
+  form.reset();
+}
+
+// ─── SCROLL PERSISTENCE ───
+const secIds = ['hero','services','work','process','testimonial','about','contact'];
+const secEls = secIds.map(id => document.getElementById(id)).filter(Boolean);
+const scrollIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) localStorage.setItem('lati_sec', e.target.id); });
+}, { threshold: 0.4 });
+secEls.forEach(el => scrollIO.observe(el));
+const saved = localStorage.getItem('lati_sec');
+if (saved && saved !== 'hero') {
+  setTimeout(() => { const el = document.getElementById(saved); if (el) window.scrollTo({ top: el.offsetTop - 80 }); }, 150);
+}
+</script>
+</body>
+</html>
