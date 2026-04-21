@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lati Creative — Brand Strategy & Visual Identity</title>
+<meta name="description" content="Latika Gulati — brand strategist and visual identity designer helping founders and executives build brands that move their business forward.">
+<meta property="og:title" content="Lati Creative — Brand Strategy & Visual Identity">
+<meta property="og:description" content="Brand strategy that moves your business forward. 8+ years, 40+ brands built.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lati Creative — Brand Strategy & Visual Identity">
+<meta name="twitter:description" content="Brand strategy that moves your business forward. 8+ years, 40+ brands built.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -102,34 +109,34 @@ nav.scrolled {
 /* ─── HERO ─── */
 #hero {
   min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 56px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  padding: 0 0 0 56px;
   border-bottom: 1px solid var(--border);
 }
 .hero-left {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  flex: 1;
   padding-top: 100px;
   padding-bottom: 64px;
-  max-width: 860px;
+  padding-right: 56px;
 }
 .hero-statement {
   font-family: var(--ff-d);
-  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
   font-weight: 400;
   font-style: italic;
-  color: var(--muted);
+  color: var(--text);
   margin-bottom: 32px;
-  line-height: 1.65;
+  line-height: 1.55;
+  text-wrap: pretty;
   opacity: 0;
   animation: fadeUp 0.8s var(--ease) 0.3s forwards;
 }
 .hero-headline {
   font-family: var(--ff-d);
-  font-size: clamp(3.2rem, 7vw, 7.5rem);
+  font-size: clamp(3.2rem, 6.5vw, 7rem);
   font-weight: 400;
   line-height: 1.0;
   letter-spacing: -0.015em;
@@ -175,95 +182,6 @@ nav.scrolled {
   opacity: 0;
   animation: fadeUp 0.8s var(--ease) 0.9s forwards;
 }
-.hero-eyebrow {
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease) 0.3s forwards;
-}
-.hero-headline {
-  font-family: var(--ff-d);
-  font-size: clamp(3.2rem, 6.5vw, 7rem);
-  font-weight: 400;
-  line-height: 1.0;
-  letter-spacing: -0.015em;
-  opacity: 0;
-  animation: fadeUp 1s var(--ease) 0.5s forwards;
-}
-.hero-headline em {
-  font-style: italic;
-  color: var(--muted);
-}
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 48px 64px;
-}
-.hero-right-section {
-  padding: 28px 0;
-  border-top: 1px solid var(--border);
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease) 0.8s forwards;
-}
-.hero-right-section:last-child { border-bottom: 1px solid var(--border); }
-.hero-right-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.hero-services-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.hero-service-item {
-  font-family: var(--ff-d);
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--text);
-}
-.hero-clients-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 12px;
-}
-.hero-client {
-  font-size: 0.82rem;
-  color: var(--muted);
-}
-.hero-statement {
-  font-family: var(--ff-d);
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.55;
-  color: var(--text);
-  text-wrap: pretty;
-}
-.hero-stats-row {
-  display: flex;
-  gap: 32px;
-}
-.hero-stat { display: flex; flex-direction: column; gap: 4px; }
-.hero-stat-n {
-  font-family: var(--ff-d);
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--accent);
-  line-height: 1;
-}
-.hero-stat-l {
-  font-size: 0.68rem;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-}
-.hero-cta-group { display: flex; flex-direction: column; gap: 12px; }
 .hero-cta {
   display: inline-block;
   font-size: 0.75rem;
@@ -290,6 +208,18 @@ nav.scrolled {
   border-radius: 50%;
   background: #5a9e6f;
   flex-shrink: 0;
+}
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 /* ─── SECTION BASICS ─── */
@@ -1026,7 +956,9 @@ footer img { height: 18px; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
-  #hero { padding: 120px 40px 64px; }
+  #hero { grid-template-columns: 1fr; padding: 0 0 0 40px; }
+  .hero-left { padding-right: 40px; padding-bottom: 64px; }
+  .hero-right { display: none; }
   .services-inner { grid-template-columns: 1fr; gap: 40px; }
   .process-inner { grid-template-columns: 1fr; gap: 40px; }
   .process-left { position: static; }
@@ -1041,7 +973,8 @@ footer img { height: 18px; }
   .nav-links, .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
   section { padding: 72px 24px; }
-  #hero { padding: 100px 24px 48px; }
+  #hero { padding: 0 0 0 24px; }
+  .hero-left { padding-right: 24px; padding-bottom: 48px; padding-top: 100px; }
   .hero-headline { font-size: clamp(2.6rem, 10vw, 4rem); }
   .case-body-inner { grid-template-columns: 1fr; }
   .case-img { aspect-ratio: 16/9; }
@@ -1119,9 +1052,12 @@ footer img { height: 18px; }
     </div>
     <div class="hero-bottom">
       <a class="hero-cta" href="#contact">Start a project</a>
+      <span class="hero-avail">Available for new projects</span>
     </div>
   </div>
-  <div class="hero-right" style="display:none"></div>
+  <div class="hero-right">
+    <img src="assets/latika-portrait.png" alt="Latika Gulati — Brand Strategist">
+  </div>
 </section>
 
 <!-- SERVICES -->
@@ -1392,6 +1328,20 @@ footer img { height: 18px; }
       <p class="about-p reveal">I'm <strong>Latika Gulati</strong> — a brand strategist with a designer's eye and a computer science background. I help businesses figure out who they are, what they stand for, and how to show up with confidence.</p>
       <p class="about-p reveal reveal-d1"><strong>Good design isn't just pretty.</strong> It makes better decisions possible. When your brand has a clear foundation — the right positioning, the right story, the right visual language — everything else gets easier. Hiring, pitching, pricing, growing.</p>
       <p class="about-p reveal reveal-d2">I work with founders, executives and entrepreneurs globally. I use AI-augmented research to move faster and see further — delivering the depth of a large agency without the timelines or the overhead. <strong>Available worldwide. Moving quickly.</strong></p>
+      <div class="about-stats reveal">
+        <div>
+          <div class="a-stat-n">8+</div>
+          <div class="a-stat-l">Years of experience</div>
+        </div>
+        <div>
+          <div class="a-stat-n">40+</div>
+          <div class="a-stat-l">Brands built</div>
+        </div>
+        <div>
+          <div class="a-stat-n">6 wks</div>
+          <div class="a-stat-l">Avg. turnaround</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1526,9 +1476,7 @@ function applyAll(t) {
   const ac = ACCENTS[t.accent] || ACCENTS.burnt;
   r.style.setProperty('--accent', ac.a);
   r.style.setProperty('--accent2', ac.a2);
-  // hi accent for dark sections
   document.querySelectorAll('#services .section-label, #services .section-label::before, #about .section-label, #about .section-label::before').forEach(() => {});
-  // update inline hi color via custom prop
   r.style.setProperty('--accent-hi', ac.hi);
 
   const bg = BGS[t.bg] || BGS.warm;
