@@ -209,18 +209,6 @@ nav.scrolled {
   background: #5a9e6f;
   flex-shrink: 0;
 }
-.hero-right {
-  position: relative;
-  overflow: hidden;
-  background: var(--surface);
-}
-.hero-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
 
 /* ─── SECTION BASICS ─── */
 section { padding: 100px 56px; }
@@ -958,7 +946,6 @@ footer img { height: 18px; }
 @media (max-width: 1024px) {
   #hero { grid-template-columns: 1fr; padding: 0 0 0 40px; }
   .hero-left { padding-right: 40px; padding-bottom: 64px; }
-  .hero-right { display: none; }
   .services-inner { grid-template-columns: 1fr; gap: 40px; }
   .process-inner { grid-template-columns: 1fr; gap: 40px; }
   .process-left { position: static; }
@@ -1054,9 +1041,6 @@ footer img { height: 18px; }
       <a class="hero-cta" href="#contact">Start a project</a>
       <span class="hero-avail">Available for new projects</span>
     </div>
-  </div>
-  <div class="hero-right">
-    <img src="assets/latika-portrait.png" alt="Latika Gulati — Brand Strategist">
   </div>
 </section>
 
